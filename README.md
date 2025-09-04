@@ -26,8 +26,8 @@
 
 1. Copiar os ficheiros para a pasta de suporte do AutoCAD (Support Path):  
 
-- `medidor_orcamentista.lsp`
-- `medidor_orcamentista.dcl`
+	- `medidor_orcamentista.lsp`
+	- `medidor_orcamentista.dcl`
 
 2. No AutoCAD, carregar o LISP usando o comando:
 
@@ -35,11 +35,11 @@
 	APPLOAD
 	```
 	
-- Selecionar `medidor_orcamentista.lsp`.  
+	- Selecionar `medidor_orcamentista.lsp`.  
 
 3. Ao carregar, deverá aparecer a mensagem:
 
-- Módulo Medidor Orçamentista - v1.0 carregado com sucesso. Use ´MEDORC´ para abrir o painel.
+	- Módulo Medidor Orçamentista - v1.0 carregado com sucesso. Use ´MEDORC´ para abrir o painel.
 
 ---
 
@@ -57,9 +57,11 @@
 5. Selecionar objetos no desenho.  
 6. Ver os resultados na **linha de comando** e verificar que foram exportados para CSV.  
 7. Usar os botões do DCL:
-- **Calcular**: realiza a medição e exporta resultados.
-- **Limpar**: reinicia campos do diálogo.
-- **Fechar**: fecha o diálogo.
+	- **Calcular**: realiza a medição e exporta resultados.
+	- **Limpar**: reinicia campos do diálogo.
+	- **Fechar**: fecha o diálogo.
+
+![ScreenShot](https://raw.githubusercontent.com/OCipriano/medidor_orcamentista/refs/heads/main/Screenshot%202025-09-04%20170540.png)
 
 ---
 
