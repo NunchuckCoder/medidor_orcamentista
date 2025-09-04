@@ -5,6 +5,8 @@
 - **Descrição:**  
   Este módulo permite medir automaticamente comprimentos, áreas, volumes e contagens de objetos no AutoCAD, atribuindo-os a layers específicos, alterando cores e exportando os resultados para CSV para orçamentação e controlo de obra.
 
+![ScreenShot](https://raw.githubusercontent.com/OCipriano/medidor_orcamentista/refs/heads/main/Screenshot%202025-09-04%20170540.png)
+
 ---
 
 ## 🚀 Funcionalidades
@@ -60,8 +62,6 @@
 	- **Calcular**: realiza a medição e exporta resultados.
 	- **Limpar**: reinicia campos do diálogo.
 	- **Fechar**: fecha o diálogo.
-
-![ScreenShot](https://raw.githubusercontent.com/OCipriano/medidor_orcamentista/refs/heads/main/Screenshot%202025-09-04%20170540.png)
 
 ---
 
