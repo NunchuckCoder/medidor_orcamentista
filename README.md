@@ -15,7 +15,7 @@
   - Volume (m³)
   - Contagem de unidades (un)
 - Aplicação automática de **cores e layers** de acordo com a unidade de medição.
-- Exportação de resultados para **CSV** com cabeçalho e escapamento de aspas.
+- Exportação de resultados para **CSV** com cabeçalho e escapamento de aspas em `medicoes.csv`.
 - Fator de ajuste para resultados finais.
 - Log de erros detalhado em `medicoes_log.txt`.
 - Interface gráfica (DCL) amigável com botões de **Calcular**, **Limpar** e **Fechar**.
@@ -31,9 +31,9 @@
 
 2. No AutoCAD, carregar o LISP usando o comando:
 
-	´´´autocad
+	```autocad
 	APPLOAD
-	´´´
+	```
 	
 - Selecionar `medidor_orcamentista.lsp`.  
 
@@ -47,9 +47,9 @@
 
 1. Executar o comando no AutoCAD:
 
-	´´´autocad
+	```autocad
 	MEDORC
-	´´´
+	```
 
 2. Selecionar o **elemento** a medir (ex: Paredes, Pavimentos).  
 3. Selecionar a **unidade** (ml, m², m³, un).  
