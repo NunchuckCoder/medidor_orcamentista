@@ -77,10 +77,10 @@
 ## ℹ️ Observações
 
 - As layers de medição são criadas automaticamente caso não existam:
-- `Medido-comprimentos`
-- `Medido-areas`
-- `Medido-volumes`
-- `Medido-objectos`
+	- `Medido-comprimentos`
+	- `Medido-areas`
+	- `Medido-volumes`
+	- `Medido-objectos`
 - Se não forem selecionados objetos, a medição é abortada sem travar o AutoCAD.
 - Os valores de volume exigem a introdução da altura/espessura do objeto.
 - Todos os comentários e mensagens estão em **Português de Portugal**.
