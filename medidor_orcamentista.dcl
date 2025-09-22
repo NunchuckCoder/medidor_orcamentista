@@ -1,43 +1,43 @@
 //--------------------=={ medidor_orcamentista.dcl }==--------------------//
 //                                                                        //
-//  DefiniÁ„o do di·logo gr·fico para o programa                          //
-//  "Medidor OrÁamentista - v1.0".                                        //
+//  Defini√ß√£o do di√°logo gr√°fico para o programa                          //
+//  "Medidor Or√ßamentista - v1.0".                                        //
 //                                                                        //
 //  Este painel fornece ao utilizador uma interface intuitiva para:       //
-//   - Selecionar o elemento da mediÁ„o a partir de uma lista.            //
-//   - Introduzir cÛdigo e descriÁ„o do item a medir.                     //
-//   - Escolher a unidade de mediÁ„o (ml, m≤, m≥, un, kg).                //
+//   - Selecionar o elemento da medi√ß√£o a partir de uma lista.            //
+//   - Introduzir c√≥digo e descri√ß√£o do item a medir.                     //
+//   - Escolher a unidade de medi√ß√£o (ml, m¬≤, m¬≥, un, kg).                //
 //   - Definir um fator multiplicador.                                    //
-//   - Ativar/desativar a seleÁ„o de objetos no desenho.                  //
+//   - Ativar/desativar a sele√ß√£o de objetos no desenho.                  //
 //                                                                        //
-//  O painel contÈm trÍs botıes principais:                               //
-//   - [Calcular] : processa a seleÁ„o e exporta os resultados.           //
-//   - [Limpar]   : reinicia todos os campos do formul·rio.               //
-//   - [Fechar]   : encerra o di·logo sem efetuar c·lculos.               //
+//  O painel cont√©m tr√™s bot√µes principais:                               //
+//   - [Calcular] : processa a sele√ß√£o e exporta os resultados.           //
+//   - [Limpar]   : reinicia todos os campos do formul√°rio.               //
+//   - [Fechar]   : encerra o di√°logo sem efetuar c√°lculos.               //
 //                                                                        //
 //  NOTAS:                                                                //
-//   - O di·logo È chamado pela funÁ„o MEDORC definida em                 //
+//   - O di√°logo √© chamado pela fun√ß√£o MEDORC definida em                 //
 //     "medidor_orcamentista.lsp".                                        //
-//   - As listas de "Elemento" e "Unidade" s„o preenchidas dinamicamente  //
-//     pelo cÛdigo LISP.                                                  //
+//   - As listas de "Elemento" e "Unidade" s√£o preenchidas dinamicamente  //
+//     pelo c√≥digo LISP.                                                  //
 //                                                                        //
 //------------------------------------------------------------------------//
-//  Autor:   Osvaldo Cipriano                                             //
-//  Vers„o:  1.0                                                          //
+//  Autor:   Mikey aka NunchuckCoder                                      //
+//  Vers√£o:  1.0                                                          //
 //  Data:    Setembro 2025                                                //
 //------------------------------------------------------------------------//
 
 medidor_orcamentista : dialog {
-    label = "Medidor OrÁamentista - v1.0";
+    label = "Medidor Or√ßamentista - v1.0";
     : row {
         : column {
             : text { label = "Elemento:"; }
             : popup_list { key = "elemento"; }
 
-            : text { label = "CÛdigo:"; }
+            : text { label = "C√≥digo:"; }
             : edit_box { key = "codigo"; width = 20; }
 
-            : text { label = "DescriÁ„o:"; }
+            : text { label = "Descri√ß√£o:"; }
             : edit_box { key = "descricao"; width = 30; }
         }
         : column {
@@ -58,3 +58,4 @@ medidor_orcamentista : dialog {
         : button { key = "fechar"; label = "Fechar"; is_cancel = true; }
     }
 }
+
