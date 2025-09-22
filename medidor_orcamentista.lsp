@@ -34,7 +34,7 @@
 ;;   4. O resultado será mostrado no AutoCAD e gravado em CSV.                 ;;
 ;;                                                                             ;;
 ;;-----------------------------------------------------------------------------;;
-;;  Autor:   Mikey aka NunchuckCoder                                                  ;;
+;;  Autor:   Mikey aka NunchuckCoder                                           ;;
 ;;  Versão:  1.0                                                               ;;
 ;;  Data:    Setembro 2025                                                     ;;
 ;;-----------------------------------------------------------------------------;;
@@ -353,4 +353,5 @@
 
 (prompt "\nCriado por Mikey aka NunchuckCoder.\n")
 (princ)
+
 
