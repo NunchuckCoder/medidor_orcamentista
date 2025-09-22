@@ -112,9 +112,9 @@ Se encontrares bugs ou tiveres sugestões, abre um **issue** ou faz um pull requ
 
 ## 📬 Contato
 
-- Desenvolvido por **Cipriano**  
-- **Email:** redealfa.password440@passmail.com 
-- **GitHub:** [https://github.com/OCipriano](https://github.com/OCipriano)
+- Desenvolvido por **Mikey**  
+- **Email:** code.wish815@passmail.com
+- **GitHub:** [https://github.com/NunchuckCoder](https://github.com/NunchuckCoder)
 
 ---
 
