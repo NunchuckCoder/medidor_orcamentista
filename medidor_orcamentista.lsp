@@ -27,14 +27,14 @@
 ;;-----------------------------------------------------------------------------;;
 ;;  FUNÇÃO PRINCIPAL:  MEDORC                                                  ;;
 ;;-----------------------------------------------------------------------------;;
-;;  Como usar:                                                                 ;;
-;;   1. Carregar o LISP.                                                       ;;
+;;  Modo de utilização:                                                        ;;
+;;   1. Carregar o ficheiro LISP no AutoCAD.                                   ;;
 ;;   2. Executar o comando MEDORC.                                             ;;
 ;;   3. Preencher os campos no painel e selecionar os objetos a medir.         ;;
 ;;   4. O resultado será mostrado no AutoCAD e gravado em CSV.                 ;;
 ;;                                                                             ;;
 ;;-----------------------------------------------------------------------------;;
-;;  Autor:   Mikey aka NunchuckCoder                                           ;;
+;;  Autor:   NunchuckCoder                                                     ;;
 ;;  Versão:  1.0                                                               ;;
 ;;  Data:    Setembro 2025                                                     ;;
 ;;-----------------------------------------------------------------------------;;
@@ -53,7 +53,7 @@
 
 (defun LogError (msg / file timestamp)
 
-  ;; --={  Tenta gravar erro no log sem interromper o programa  }=--
+  ;; --={  Gravar erro no log sem interromper o programa  }=--
   ;; --={  Cria ou abre "medicoes_log.txt" e escreve timestamp + mensagem  }=--
   
   (vl-catch-all-apply
@@ -75,16 +75,18 @@
 ;;                             Funções utilitárias                             ;;
 ;;-----------------------------------------------------------------------------;;
 
+;; --={  Garantir que a layer existe, criando-a se necessário.  }=--
+
 (defun EnsureLayer (layername /)
-  "Garante que uma layer existe, criando se necessário."
   (if (not (tblsearch "layer" layername))
     (command "_.LAYER" "M" layername "")
   )
   layername
 )
 
+;; --={  Calcular o comprimento de uma curva com segurança.  }=--
+
 (defun CalcLength (obj / len)
-  "Calcula comprimento de curva com segurança."
   (vl-catch-all-apply
     (function
       (lambda ()
@@ -96,13 +98,15 @@
   )
 )
 
+;; --={  Calcula área de objeto com segurança.  }=--
+
 (defun CalcArea (obj / a)
-  "Calcula área de objeto com segurança."
   (vl-catch-all-apply 'vla-get-Area (list obj))
 )
+  }=--
+;; --={  Escapar aspas e colocar o texto entre aspas para CSV.
 
 (defun EscapeCSV (str / s)
-  "Escapa aspas e coloca o texto entre aspas para CSV."
   (setq s (vl-string-subst "\"\"" "\"" str)) ; substitui aspas internas por dupla aspas
   (strcat "\"" s "\"")
 )
@@ -119,7 +123,7 @@
     (setq ent (ssname ss (setq i (1- i))))
     (setq obj (vlax-ename->vla-object ent))
 	
-    ;; --={  Calcula total conforme unidade  }=--
+    ;; --={  Calcular total conforme unidade  }=--
 	
     (cond
       ((= unidade "ml")  (setq val (+ val (CalcLength obj))))
@@ -144,15 +148,15 @@
 (prompt "\nVerificando suporte a VLAX...")
 (if (vl-catch-all-error-p (vl-catch-all-apply 'vlax-get-acad-object '()))
   (progn
-    (prompt "\nVLAX não suportado. Encerrando...")
-    (LogError "[Erro] Este ambiente não suporta VLAX. O programa não pode ser executado.")
+    (prompt "\n[Erro] Este ambiente não suporta VLAX. O programa não pode ser executado.")
     (exit)
   )
   (progn
-    (prompt "\nCarregando VLAX...")
     (vl-load-com)
-    (prompt "\nVLAX carregado com sucesso.")
-    (prompt "\nMódulo Medidor Orçamentista - v1.0 carregado com sucesso. Use MEDORC para abrir o painel.")
+    (setq *acadApp* (vlax-get-acad-object))
+    (setq *doc* (vla-get-ActiveDocument *acadApp*))
+    (setq *ms* (vla-get-ModelSpace *doc*))
+    (prompt "\nVLAX carregado e ambiente pronto.")
   )
 )
 
@@ -257,7 +261,7 @@
 	 
      (if (or (not fator) (<= fator 0.0)) (setq fator 1.0))
 	 
-	 ;; --={  Inicializa a variável total antes de calcular a medição  }=--
+	 ;; --={  Inicializar variável total antes de calcular a medição  }=--
 	 
      (setq total 0.0)
 
@@ -267,14 +271,14 @@
 	 
 	 (if (= (atoi sel) 1)
        (progn
-         (prompt "\nSelecione objetos para medir:")
+         (prompt "\nSelecione os objetos para medir:")
          (setq ss (ssget))
 		 
-		 ;; --={  Sai se não houver objetos selecionados  }=--
+		 ;; --={  Sair se não houver objetos selecionados  }=--
 		 
          (if (not ss)
            (progn
-             (prompt "\nNenhum objeto selecionado. Abortando medição.")
+             (prompt "\nNenhum objeto selecionado. Medição cancelada.")
              (setq total 0.0) ; evita crash
            )
            (progn
@@ -289,16 +293,16 @@
                (T (prompt "\nUnidade não suportada para cálculo"))
              )
 
-		 ;; --={  Para volume, pede altura  }=--
+		 ;; --={  Para volume, pedir altura  }=--
 		 
              (if (= unidade "m³")
                (progn
-                 (setq altura (getreal "\nInforme a altura/espessura (m): "))
+                 (setq altura (getreal "\nIndique a altura/espessura (m): "))
                  (if (or (not altura) (<= altura 0.0)) (setq altura 1.0))
                )
              )
 
-         ;; --={  Processa seleção de objetos  }=--
+         ;; --={  Processar seleção de objetos  }=--
 		 
              (setq total (ProcessSelection ss unidade layer color altura))
            )
@@ -322,15 +326,15 @@
      (setq filename (strcat (getvar "DWGPREFIX") "medicoes.csv"))
      (setq newfile (or (not (findfile filename)) (= (vl-file-size filename) 0)))
      (setq file (open filename "a"))
-     (if newfile (write-line "Elemento,Código,Descrição,Unidade,Quantidade,Fator,Total" file))
+     (if newfile (write-line "Elemento;Código;Descrição;Unidade;Quantidade;Fator;Total" file))
      (write-line
        (strcat
-         (EscapeCSV elemento) ","   ; Ex: "Paredes"
-         (EscapeCSV codigo) ","     ; Ex: "12345"
-         (EscapeCSV descricao) ","  ; Ex: "Fachada A"
-         unidade ","                ; Ex: "m²"
-         (rtos quantidade 2 2) ","  ; Quantidade antes do fator
-         (rtos fator 2 2) ","       ; Fator aplicado
+         (EscapeCSV elemento) ";"   ; Ex: "Paredes"
+         (EscapeCSV codigo) ";"     ; Ex: "12345"
+         (EscapeCSV descricao) ";"  ; Ex: "Fachada A"
+         unidade ";"                ; Ex: "m²"
+         (rtos quantidade 2 2) ";"  ; Quantidade antes do fator
+         (rtos fator 2 2) ";"       ; Fator aplicado
          (rtos total_final 2 2)     ; Total final com fator
        )
        file
@@ -351,7 +355,5 @@
 ;;                      Mensagem Final ao carregar o LISP                      ;;
 ;;-----------------------------------------------------------------------------;;
 
-(prompt "\nCriado por Mikey aka NunchuckCoder.\n")
+(prompt "\nMódulo medidor_orcamentista.lsp carregado com sucesso.\nUse MEDORC para executar os comandos.\nCriado por NunchuckCoder.\n")
 (princ)
-
-
