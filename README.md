@@ -3,7 +3,9 @@
   <img src="https://img.shields.io/badge/LISP-990000?logo=commonlisp&logoColor=white&style=for-the-badge" />
   <img src="https://img.shields.io/badge/DCL-e96227?logo=dcl&logoColor=white&style=for-the-badge" />
   <img src="https://img.shields.io/badge/Windows%2011-%230079d5.svg?style=for-the-badge&logo=Windows%2011&logoColor=white" />
-  <img src="https://img.shields.io/badge/AutoCAD-FF1111?logo=autocad&logoColor=white&style=for-the-badge" />	
+  <img src="https://img.shields.io/badge/AutoCAD-FF1111?logo=autocad&logoColor=white&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/status-active-success?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge" />
 </p>
  
 <p align="center">Este módulo permite medir automaticamente comprimentos, áreas, volumes e contagens de objetos no AutoCAD, atribuindo-os a layers específicos, alterando cores e exportando os resultados para CSV para orçamentação e controlo de obra.</p>
