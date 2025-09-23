@@ -1,9 +1,10 @@
-# Medidor Orçamentista
-
-- **Versão:** 1.0  
-- **Linguagem:** AutoLISP / DCL  
-- **Descrição:**  
-  Este módulo permite medir automaticamente comprimentos, áreas, volumes e contagens de objetos no AutoCAD, atribuindo-os a layers específicos, alterando cores e exportando os resultados para CSV para orçamentação e controlo de obra.
+<h1 align="center">Medidor Orçamentista</h1>
+<p align="center">
+  <img src="https://img.shields.io/badge/LISP-990000?logo=commonlisp&logoColor=white&style=for-the-badge" />
+  <img src="https://img.shields.io/badge/DCL-990000?logo=commonlisp&logoColor=white&style=for-the-badge" />
+</p>
+ 
+<p align="center">Este módulo permite medir automaticamente comprimentos, áreas, volumes e contagens de objetos no AutoCAD, atribuindo-os a layers específicos, alterando cores e exportando os resultados para CSV para orçamentação e controlo de obra.</p>
 
 ![ScreenShot](https://raw.githubusercontent.com/OCipriano/medidor_orcamentista/refs/heads/main/Screenshot%202025-09-04%20170540.png)
 
