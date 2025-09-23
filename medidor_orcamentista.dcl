@@ -5,10 +5,10 @@
 //                                                                        //
 //  Este painel fornece ao utilizador uma interface intuitiva para:       //
 //   - Selecionar o elemento da medição a partir de uma lista.            //
-//   - Introduzir código e descrição do item a medir.                     //
+//   - Indicar código e descrição do item a medir.                        //
 //   - Escolher a unidade de medição (ml, m², m³, un, kg).                //
 //   - Definir um fator multiplicador.                                    //
-//   - Ativar/desativar a seleção de objetos no desenho.                  //
+//   - Indicar se pretende escolher objetos no desenho.                   //
 //                                                                        //
 //  O painel contém três botões principais:                               //
 //   - [Calcular] : processa a seleção e exporta os resultados.           //
@@ -22,7 +22,7 @@
 //     pelo código LISP.                                                  //
 //                                                                        //
 //------------------------------------------------------------------------//
-//  Autor:   Mikey aka NunchuckCoder                                      //
+//  Autor:   NunchuckCoder                                                //
 //  Versão:  1.0                                                          //
 //  Data:    Setembro 2025                                                //
 //------------------------------------------------------------------------//
@@ -48,7 +48,7 @@ medidor_orcamentista : dialog {
             : edit_box { key = "fator"; width = 10; }
 			
 			: text { label = ""; }
-            : toggle { key = "selecionar"; label = "Selecionar objetos no desenho"; }
+            : toggle { key = "selecionar"; label = "Indicar objetos no desenho"; }
         }
     }
 
@@ -58,4 +58,3 @@ medidor_orcamentista : dialog {
         : button { key = "fechar"; label = "Fechar"; is_cancel = true; }
     }
 }
-
